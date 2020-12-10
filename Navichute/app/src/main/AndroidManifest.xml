@@ -3,14 +3,13 @@
     package="swc.chuma.navichute">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-feature android:name="android.hardware.type.watch" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <meta-data
         android:name="com.kakao.sdk.AppKey"
-        android:value="네이티브 앱키(개발자 페이지-내 애플리케이션에서 확인가능)" />
+        android:value="6e1cec02d21976fa0397d5a6787d95b0" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Navichute"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".NavigateActivity"/>
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash">
@@ -38,8 +37,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
-        </activity>
+            android:label="@string/title_activity_main"/>
     </application>
 
 </manifest>
