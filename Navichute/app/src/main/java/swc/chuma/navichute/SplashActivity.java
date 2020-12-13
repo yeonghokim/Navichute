@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +33,22 @@ public class SplashActivity extends AppCompatActivity {
         }else {
             checkRunTimePermission();
         }
+
+        FrameLayout layout=(FrameLayout)findViewById(R.id.splash_layout);
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in); // Create the animation.
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+        layout.startAnimation(anim);
 
     }
     /* ActivityCompat.requestPermissions를 사용한 퍼미션 요청의 결과를 리턴받는 메소드입니다. */

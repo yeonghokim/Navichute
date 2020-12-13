@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavigateActivity">
+    tools:context=".NavigateActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서울특별시 종로구"
+            android:textSize="13pt"
+            android:textColor="@color/black"
+            android:id="@+id/navistart_address"/>
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거리 : 10km"
+            android:textSize="10pt"
+            android:textColor="@color/black"
+            android:paddingStart="5dp"
+            android:id="@+id/navistart_distance"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위도 : 120.304050"
+            android:textSize="10pt"
+            android:textColor="@color/black"
+            android:paddingStart="5dp"
+            android:id="@+id/navistart_latitude"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경도 : 120.304050"
+            android:textSize="10pt"
+            android:textColor="@color/black"
+            android:paddingStart="5dp"
+            android:id="@+id/navistart_longitude"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="네비게이션 시작"
+                android:layout_alignParentRight="true"
+                android:background="#0385FF" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

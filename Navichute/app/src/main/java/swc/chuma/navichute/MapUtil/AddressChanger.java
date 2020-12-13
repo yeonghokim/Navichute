@@ -139,7 +139,7 @@ public class AddressChanger extends Service implements LocationListener {
             return "주소 미발견";
         }
         Address address = addresses.get(0);
-        return address.getAddressLine(0).toString()+"\n";
+        return address.getAddressLine(0).toString();
     }
 
     public void stopUsingGPS() {
