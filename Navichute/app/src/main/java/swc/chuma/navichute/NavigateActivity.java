@@ -3,7 +3,10 @@ package swc.chuma.navichute;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -26,7 +29,8 @@ public class NavigateActivity extends AppCompatActivity {
 
         return mappoint;
     }
-
+    MapPoint departPoint;
+    MapPoint arrivalPoint;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +39,13 @@ public class NavigateActivity extends AppCompatActivity {
 
         AddressChanger addressChanger = new AddressChanger(this);
 
-        MapPoint departPoint = MapPoint.mapPointWithGeoCoord(addressChanger.getLatitude(),addressChanger.getLongitude());
-        MapPoint arrivalPoint = (MapPoint)getIntent().getExtras().get("mapPoint");
+        departPoint = MapPoint.mapPointWithGeoCoord(addressChanger.getLatitude(),addressChanger.getLongitude());
+        arrivalPoint = (MapPoint)getIntent().getExtras().get("mapPoint");
 
         MapView mapView = new MapView(this);
         ViewGroup mapViewContainer = findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
-        mapView.setMapCenterPoint(getMiddlePoint(departPoint,arrivalPoint), true);
+        //mapView.setMapCenterPoint(getMiddlePoint(departPoint,arrivalPoint), true);
 
         MapPOIItem marker = new MapPOIItem();
         marker.setItemName("출발 지역");
@@ -85,5 +89,12 @@ public class NavigateActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.navistart_longitude);
         textView.setText("경도 : "+arrivalPoint.getMapPointGeoCoord().longitude);// 거리 넣기
+    }
+    public void GoNaviChute(View v){
+        Intent intent= new Intent(NavigateActivity.this,NaviServiceActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.putExtra("departPoint", (Parcelable) departPoint);
+        intent.putExtra("arrivalPoint", (Parcelable) arrivalPoint);
+        startActivity(intent);
     }
 }

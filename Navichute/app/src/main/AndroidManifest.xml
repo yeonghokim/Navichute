@@ -19,12 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Navichute"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NavigateActivity"/>
+        <activity android:name=".NaviServiceActivity"></activity>
+        <activity android:name=".NavigateActivity" />
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,7 +38,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"/>
+            android:label="@string/title_activity_main" />
     </application>
 
 </manifest>

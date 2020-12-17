@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.IBinder;
 
 import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import swc.chuma.navichute.MapUtil.AddressChanger;
+import swc.chuma.navichute.NaviServiceActivity;
 import swc.chuma.navichute.R;
 import swc.chuma.navichute.ReadUtil.TextReader;
 
@@ -72,6 +74,11 @@ public class NavigateService extends Service {
                     //글씨 읽어주기
                     TextReader.getInstance(context);
                     TextReader.readText("목적지까지 "+distance+"m 남았습니다.");
+
+                    Intent intent = new Intent(NaviServiceActivity.ReceiverID);
+                    intent.putExtra("distance", distance);
+                    intent.putExtra("direction","방향");
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
                     if(i++>=10) break;
                 }

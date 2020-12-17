@@ -129,6 +129,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (checkLocationServicesStatus()) {
                     if (checkLocationServicesStatus()) {
                         Log.d("@@@", "onActivityResult : GPS 활성화 되있음");
+                        Toast.makeText(this, "onActivityResult : GPS 활성화 되있음", Toast.LENGTH_SHORT).show();
                         checkRunTimePermission();
                         return;
                     }
